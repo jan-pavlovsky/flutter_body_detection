@@ -151,6 +151,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> _switchCamera() async {
+    await BodyDetection.switchCamera();
+  }
+
   Future<void> _toggleDetectPose() async {
     if (_isDetectingPose) {
       await BodyDetection.disablePoseDetection();
@@ -264,6 +268,12 @@ class _MyAppState extends State<MyApp> {
                     imageSize: _imageSize,
                   ),
                 ),
+              ),
+              OutlinedButton(
+                onPressed: _switchCamera,
+                child: _isDetectingPose
+                    ? const Text('Switch camera')
+                    : const Text('Switch camera'),
               ),
               OutlinedButton(
                 onPressed: _toggleDetectPose,

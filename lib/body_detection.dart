@@ -20,6 +20,17 @@ class BodyDetection {
 
   // Image
 
+  static Future switchCamera() async {
+    try {
+      final result = await _channel.invokeMapMethod(
+        'switchCamera',
+        <String, dynamic>{},
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
   static Future<Pose?> detectPose({required PngImage image}) async {
     final Uint8List pngImageBytes = image.bytes.buffer.asUint8List();
     try {
