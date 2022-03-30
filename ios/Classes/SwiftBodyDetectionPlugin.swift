@@ -138,7 +138,8 @@ public class SwiftBodyDetectionPlugin: NSObject, FlutterPlugin {
                 print("Camera session is not active!")
                 return
             }
-            session.switchCamera(isFront: false)
+            let ifc = session.isFront
+            session.switchCamera(isFront: !false)
             result(true)
             return
             
